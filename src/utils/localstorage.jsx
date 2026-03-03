@@ -1,0 +1,228 @@
+const employees = [
+  {
+    id: 1,
+    email: "employee1@example.com",
+    password: "123",
+    tasks: [
+      {
+        active: true,
+        newTask: true,
+        completed: false,
+        failed: false,
+        title: "Prepare Sales Report",
+        description: "Create monthly sales report for management.",
+        date: "2026-03-01",
+        category: "Reporting",
+      },
+      {
+        active: false,
+        newTask: false,
+        completed: true,
+        failed: false,
+        title: "Client Follow-up",
+        description: "Call client regarding contract renewal.",
+        date: "2026-02-25",
+        category: "Communication",
+      },
+      {
+        active: false,
+        newTask: false,
+        completed: false,
+        failed: true,
+        title: "Update CRM",
+        description: "Update outdated customer information in CRM.",
+        date: "2026-02-20",
+        category: "Data Entry",
+      },
+    ],
+  },
+  {
+    id: 2,
+    email: "employee2@example.com",
+    password: "123",
+    tasks: [
+      {
+        active: true,
+        newTask: true,
+        completed: false,
+        failed: false,
+        title: "Website Bug Fix",
+        description: "Fix navbar responsiveness issue.",
+        date: "2026-03-02",
+        category: "Development",
+      },
+      {
+        active: false,
+        newTask: false,
+        completed: true,
+        failed: false,
+        title: "API Integration",
+        description: "Integrate payment gateway API.",
+        date: "2026-02-28",
+        category: "Development",
+      },
+      {
+        active: true,
+        newTask: false,
+        completed: false,
+        failed: false,
+        title: "Code Review",
+        description: "Review teammate's pull request.",
+        date: "2026-03-03",
+        category: "Review",
+      },
+      {
+        active: false,
+        newTask: false,
+        completed: false,
+        failed: true,
+        title: "Unit Testing",
+        description: "Write unit tests for auth module.",
+        date: "2026-02-22",
+        category: "Testing",
+      },
+    ],
+  },
+  {
+    id: 3,
+    email: "employee3@example.com",
+    password: "123",
+    tasks: [
+      {
+        active: true,
+        newTask: true,
+        completed: false,
+        failed: false,
+        title: "Design Landing Page",
+        description: "Create UI mockup for new landing page.",
+        date: "2026-03-01",
+        category: "Design",
+      },
+      {
+        active: false,
+        newTask: false,
+        completed: true,
+        failed: false,
+        title: "Logo Revision",
+        description: "Revise company logo as per feedback.",
+        date: "2026-02-26",
+        category: "Design",
+      },
+      {
+        active: true,
+        newTask: false,
+        completed: false,
+        failed: false,
+        title: "Banner Creation",
+        description: "Design promotional banner for campaign.",
+        date: "2026-03-04",
+        category: "Marketing",
+      },
+    ],
+  },
+  {
+    id: 4,
+    email: "employee4@example.com",
+    password: "123",
+    tasks: [
+      {
+        active: true,
+        newTask: true,
+        completed: false,
+        failed: false,
+        title: "Database Backup",
+        description: "Perform weekly database backup.",
+        date: "2026-03-02",
+        category: "Database",
+      },
+      {
+        active: false,
+        newTask: false,
+        completed: true,
+        failed: false,
+        title: "Server Maintenance",
+        description: "Clean up unused server logs.",
+        date: "2026-02-27",
+        category: "Maintenance",
+      },
+      {
+        active: false,
+        newTask: false,
+        completed: false,
+        failed: true,
+        title: "Optimize Queries",
+        description: "Improve performance of slow queries.",
+        date: "2026-02-24",
+        category: "Database",
+      },
+      {
+        active: true,
+        newTask: false,
+        completed: false,
+        failed: false,
+        title: "Security Audit",
+        description: "Check system vulnerabilities.",
+        date: "2026-03-05",
+        category: "Security",
+      },
+    ],
+  },
+  {
+    id: 5,
+    email: "employee5@example.com",
+    password: "123",
+    tasks: [
+      {
+        active: true,
+        newTask: true,
+        completed: false,
+        failed: false,
+        title: "Social Media Post",
+        description: "Create and schedule Instagram post.",
+        date: "2026-03-01",
+        category: "Marketing",
+      },
+      {
+        active: false,
+        newTask: false,
+        completed: true,
+        failed: false,
+        title: "Email Campaign",
+        description: "Send promotional email campaign.",
+        date: "2026-02-28",
+        category: "Marketing",
+      },
+      {
+        active: false,
+        newTask: false,
+        completed: false,
+        failed: true,
+        title: "Ad Performance Review",
+        description: "Analyze ad performance metrics.",
+        date: "2026-02-23",
+        category: "Analysis",
+      },
+    ],
+  },
+];
+
+const admin = {
+  id: 1,
+  email: "admin@example.com",
+  password: "123",
+};
+
+
+export const setLocalStorage = () => {
+    localStorage.setItem('employees', JSON.stringify(employees))
+    localStorage.setItem('admin', JSON.stringify(admin))
+}
+
+export const getLocalStorage = () => {
+    const employees = JSON.parse(localStorage.getItem('employees'))
+    const admin = JSON.parse(localStorage.getItem('admin'))
+    
+    console.log(employees, admin);
+    
+    
+}
