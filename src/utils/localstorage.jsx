@@ -7,14 +7,14 @@ const employees = [
     email: "employee1@example.com",
     password: "123",
     taskNumbers: {
-      active: 1,
+      active: 0,
       newTask: 1,
       completed: 1,
       failed: 1,
     },
     tasks: [
       {
-        active: true,
+        active: false,
         newTask: true,
         completed: false,
         failed: false,
@@ -51,14 +51,14 @@ const employees = [
     email: "employee2@example.com",
     password: "123",
     taskNumbers: {
-      active: 2,
+      active: 1,
       newTask: 1,
       completed: 1,
       failed: 1,
     },
     tasks: [
       {
-        active: true,
+        active: false,
         newTask: true,
         completed: false,
         failed: false,
@@ -106,14 +106,14 @@ const employees = [
     password: "123",
     taskNumbers: {
       active: 2,
-      newTask: 1,
+      newTask: 0,
       completed: 1,
       failed: 0,
     },
     tasks: [
       {
         active: true,
-        newTask: true,
+        newTask: false,
         completed: false,
         failed: false,
         title: "Design Landing Page",
@@ -151,12 +151,12 @@ const employees = [
     taskNumbers: {
       active: 2,
       newTask: 1,
-      completed: 1,
+      completed: 0,
       failed: 1,
     },
     tasks: [
       {
-        active: true,
+        active: false,
         newTask: true,
         completed: false,
         failed: false,
@@ -166,9 +166,9 @@ const employees = [
         category: "Database",
       },
       {
-        active: false,
+        active: true,
         newTask: false,
-        completed: true,
+        completed: false,
         failed: false,
         title: "Server Maintenance",
         description: "Clean up unused server logs.",
@@ -203,14 +203,14 @@ const employees = [
     email: "employee5@example.com",
     password: "123",
     taskNumbers: {
-      active: 1,
+      active: 0,
       newTask: 1,
       completed: 1,
       failed: 1,
     },
     tasks: [
       {
-        active: true,
+        active: false,
         newTask: true,
         completed: false,
         failed: false,
