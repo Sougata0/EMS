@@ -21,7 +21,7 @@ const TaskList = ({ data }) => {
           return <CompletedTask key={idx} data={elem}/>;
         }
         if (elem.newTask) {
-          console.log(elem.newTask)
+          // console.log(elem.newTask)
           return <NewTask key={idx} data={elem}/>;
         }
       })}

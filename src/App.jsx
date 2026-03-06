@@ -57,8 +57,8 @@ function App() {
   return (
     <>
       {!user ? <Login handleLogin={handleLogin} /> : ""}
-      {user == "admin" ? <AdminDashboard data={authData.admin}/> : ""}
-      {user == "employee" ? <EmployeeDashboard data={loggedInUserData} /> : ""}
+      {user == "admin" ? <AdminDashboard changeUser={setUser} data={authData.admin}/> : ""}
+      {user == "employee" ? <EmployeeDashboard changeUser={setUser} data={loggedInUserData} /> : ""}
     </>
   );
 }

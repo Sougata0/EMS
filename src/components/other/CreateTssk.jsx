@@ -1,11 +1,43 @@
+import { useState } from "react";
+
 const CreateTask = () => {
+
+  const [taskTitle, setTaskTitle] = useState("")
+  const [taskDescription, setTaskDescription] = useState("")
+  const [taskDate, setTaskDate] = useState("")
+  const [taskAsignTo, setTaskAsignTo] = useState("")
+  const [taskCategory, setTaskCategory] = useState("")
+
+  const [newTask, setNewTask] = useState({})
+
+  const submitHandler = (e) => {
+    e.preventDefault()
+    
+    const task = {taskTitle, taskDescription, taskDate, taskCategory, taskAsignTo, active:false, newTask: true, completed: false, failed: false }
+    setNewTask(task)
+    console.log(task);
+    setTaskAsignTo("")
+    setTaskCategory("")
+    setTaskDate("")
+    setTaskDescription("")
+    setTaskTitle("")
+  }
+
   return (
     <div className="bg-gray-800 mt-5 w-full px-15  rounded-sm py-15 flex justify-between">
-      <form className="flex flex-wrap w-full items-stretch justify-between">
+      <form 
+      onSubmit={(e) => {
+        submitHandler(e)
+      }}
+      className="flex flex-wrap w-full items-stretch justify-between">
         <div className="w-1/2 h-full flex flex-col justify-between">
           <div>
             <h4 className="text-sm text-gray-300 mb-1">Task Title</h4>
             <input
+              value={taskTitle}
+              onChange={(e)=>{
+                setTaskTitle(e.target.value)
+              }}
               className="border text-sm w-4/5 rounded outline-none bg-transparent border-gray-400 px-2 py-1 "
               placeholder="Make a UI design"
               type="text"
@@ -14,6 +46,10 @@ const CreateTask = () => {
           <div>
             <h4 className="text-sm text-gray-300 mb-1">Date</h4>
             <input
+              value={taskDate}
+              onChange={(e)=>{
+                setTaskDate(e.target.value)
+              }}
               className="border text-sm w-4/5 rounded outline-none bg-transparent border-gray-400 px-2 py-1"
               type="date"
             />
@@ -21,6 +57,10 @@ const CreateTask = () => {
           <div>
             <h4 className="text-sm text-gray-300 mb-1">Asign to</h4>
             <input
+              value={taskAsignTo}
+              onChange={(e)=>{
+                setTaskAsignTo(e.target.value)
+              }}
               className="border text-sm w-4/5 rounded outline-none bg-transparent border-gray-400 px-2 py-1 "
               placeholder="Employee name"
               type="text"
@@ -29,6 +69,10 @@ const CreateTask = () => {
           <div>
             <h4 className="text-sm text-gray-300 mb-1">Category</h4>
             <input
+              value={taskCategory}
+              onChange={(e)=>{
+                setTaskCategory(e.target.value)
+              }}
               className="border text-sm w-4/5 rounded outline-none bg-transparent border-gray-400 px-2 py-1 "
               placeholder="Design, Dev, etc."
               type="text"
@@ -39,6 +83,10 @@ const CreateTask = () => {
         <div className="flex flex-col items-start w-2/5">
           <h2 className="text-sm text-gray-300 mb-0.5">Description</h2>
           <textarea
+            value={taskDescription}
+            onChange={(e)=>{
+              setTaskDescription(e.target.value)
+            }}
             className="border w-full h-45 text-sm  rounded outline-none bg-transparent border-gray-400 p-1"
             name=" "
             id=""
