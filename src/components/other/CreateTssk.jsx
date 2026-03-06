@@ -1,27 +1,44 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../context/AuthProvider";
 
 const CreateTask = () => {
 
-  const [taskTitle, setTaskTitle] = useState("")
-  const [taskDescription, setTaskDescription] = useState("")
-  const [taskDate, setTaskDate] = useState("")
+  const { employees } = useContext(AuthContext);
+
+  const [title, setTitle] = useState("")
+  const [description, setDescription] = useState("")
+  const [date, setDate] = useState("")
   const [taskAsignTo, setTaskAsignTo] = useState("")
-  const [taskCategory, setTaskCategory] = useState("")
+  const [category, setCategory] = useState("")
 
   const [newTask, setNewTask] = useState({})
 
   const submitHandler = (e) => {
     e.preventDefault()
     
-    const task = {taskTitle, taskDescription, taskDate, taskCategory, taskAsignTo, active:false, newTask: true, completed: false, failed: false }
+    const task = {title, description, date, category, active:false, newTask: true, completed: false, failed: false }
     setNewTask(task)
     console.log(task);
+
+    employees.forEach(elem => {
+    if(taskAsignTo == elem.firstName){
+      elem.tasks.push(task)
+      elem.taskNumbers.newTask = elem.taskNumbers.newTask + 1
+    }
+  });
+
+
     setTaskAsignTo("")
-    setTaskCategory("")
-    setTaskDate("")
-    setTaskDescription("")
-    setTaskTitle("")
+    setCategory("")
+    setDate("")
+    setDescription("")
+    setTitle("")
   }
+
+  // console.log(employees);
+
+  
+  
 
   return (
     <div className="bg-gray-800 mt-5 w-full px-15  rounded-sm py-15 flex justify-between">
@@ -34,9 +51,9 @@ const CreateTask = () => {
           <div>
             <h4 className="text-sm text-gray-300 mb-1">Task Title</h4>
             <input
-              value={taskTitle}
+              value={title}
               onChange={(e)=>{
-                setTaskTitle(e.target.value)
+                setTitle(e.target.value)
               }}
               className="border text-sm w-4/5 rounded outline-none bg-transparent border-gray-400 px-2 py-1 "
               placeholder="Make a UI design"
@@ -46,9 +63,9 @@ const CreateTask = () => {
           <div>
             <h4 className="text-sm text-gray-300 mb-1">Date</h4>
             <input
-              value={taskDate}
+              value={date}
               onChange={(e)=>{
-                setTaskDate(e.target.value)
+                setDate(e.target.value)
               }}
               className="border text-sm w-4/5 rounded outline-none bg-transparent border-gray-400 px-2 py-1"
               type="date"
@@ -69,9 +86,9 @@ const CreateTask = () => {
           <div>
             <h4 className="text-sm text-gray-300 mb-1">Category</h4>
             <input
-              value={taskCategory}
+              value={category}
               onChange={(e)=>{
-                setTaskCategory(e.target.value)
+                setCategory(e.target.value)
               }}
               className="border text-sm w-4/5 rounded outline-none bg-transparent border-gray-400 px-2 py-1 "
               placeholder="Design, Dev, etc."
@@ -83,9 +100,9 @@ const CreateTask = () => {
         <div className="flex flex-col items-start w-2/5">
           <h2 className="text-sm text-gray-300 mb-0.5">Description</h2>
           <textarea
-            value={taskDescription}
+            value={description}
             onChange={(e)=>{
-              setTaskDescription(e.target.value)
+              setDescription(e.target.value)
             }}
             className="border w-full h-45 text-sm  rounded outline-none bg-transparent border-gray-400 p-1"
             name=" "
